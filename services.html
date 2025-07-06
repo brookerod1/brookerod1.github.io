@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Facing Anxiety | Services</title>
+  <style>
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Georgia', serif;
+      color: #2d3a35;
+      line-height: 1.5;
+      background-color: #C1D7B3;
+      overflow-x: hidden;
+      position: relative;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* Gradient Overlay */
+    body::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 300px;
+      background: linear-gradient(to bottom, rgba(1,16,3,0.85), rgba(1,16,3,0));
+      pointer-events: none; z-index: 5;
+    }
+
+    /* Header / Navigation */
+    .site-header {
+      position: absolute; top: 0; left: 0; width: 100%;
+      padding: 1em 2em;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 10; background: rgba(255,255,255,0);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0; transform: translateY(20px);
+    }
+    .site-header.visible { opacity:1; transform: translateY(0); }
+    .site-header nav ul { list-style: none; display: flex; gap: 2em; }
+    .site-header nav a {
+      font-size: 1em;
+      font-weight: 500;
+      /* Increase spacing between items */
+.site-header nav ul {
+  gap: 3em;            /* was 2em */
+}
+
+/* Make links feel interactive */
+.site-header nav a {
+  padding: 0.5em 1em;              /* adds click‐target padding */
+  cursor: pointer;                 /* pointer on hover */
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.site-header nav a:hover {
+  color: #FBF9C4;                  /* light accent on hover */
+  transform: translateY(-2px);     /* subtle lift */
+}
+/* Fancy animation */
+.site-header nav a {
+  position: relative;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+.site-header nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #FBF9C4;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+.site-header nav a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Subtle scale on hover */
+.site-header nav a:hover {
+  transform: scale(1.05);
+}
+
+      color: #EEEDC6;
+      text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1), 2px 2px 4px rgba(0,0,0,0.2);
+      font-family: 'Georgia', serif;
+    }
+    .site-header .logo img { height: 120px; object-fit: contain; }
+
+    /* Buttons */
+    .btn-footer-style {
+      display: inline-block;
+      background: rgba(238,237,198,0.809);
+      color: #2F3C24;
+      text-transform: uppercase;
+      font-family: 'Georgia', serif;
+      font-size: 1.1em;
+      font-weight: 500;
+      padding: 0.75em 1.5em;
+      border-radius: 0.25px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .btn-footer-style:hover {
+      background: #4A5A3A;
+      color: #FBF9C4;
+      transform: translateY(-2px);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative; width: 100%;
+      padding: 12rem 2rem 4rem;
+      text-align: center;
+      background: linear-gradient(to bottom, #C1D7B3, rgba(193,215,179,0.5));
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .hero.visible { opacity: 1; transform: translateY(0); }
+    .hero h1 { font-size: 1.8em; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.5em; }
+    .hero p { max-width: 800px; margin: 0 auto 1.5em; line-height: 1.4; }
+
+    /* Core Offerings */
+    .offerings {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 2em;
+      margin: 3em auto;
+      padding: 0 2em;
+      max-width: 1500px;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .offerings.visible { opacity: 1; transform: translateY(0); }
+    .offering {
+      background: rgb(103, 126, 87);
+      color: #EEEDC6;
+      padding: 2em;
+      border-radius: 0.5em;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .offering:hover { transform: translateY(-5px); }
+
+    /* Interactive Icons */
+    .interactive {
+      display: flex; justify-content: center; gap: 3em;
+      margin: 6em 2em;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .interactive.visible { opacity: 1; transform: translateY(0); }
+
+    .interactive .item {
+      background: rgba(238,237,198,0.49);
+      padding: 1em;
+      border-radius: 8px;
+      width: 450px; max-width: 450px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .interactive .item:hover { transform: scale(1.05); }
+    .interactive .item img { width: 80px; margin-bottom: 0.5em; }
+    .interactive .item h3 { margin-bottom: 0.5em; }
+    .interactive .item .label { font-size: 0.9em; color: #677E57; }
+
+    /* Details toggling */
+    .interactive .item .details {
+      display: none;
+      margin-top: 0.5em;
+      text-align: left;
+    }
+    .interactive .item .details.open {
+      display: block;
+    }
+
+    /* CTA Section */
+    .cta { background: #C1D7B3; text-align: center; padding: 3em 1em; opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease; }
+    .cta.visible { opacity: 1; transform: none; }
+    .cta .tagline { display: flex; justify-content: center; align-items: center; gap: 1em; font-weight: 500; margin-bottom: 1em; }
+    .cta .tagline-logo { width: 80px; filter: opacity(50%); }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      display: flex; justify-content: center; gap: 2em; padding: 2em 0; background: transparent;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .bottom-nav.visible { opacity: 1; transform: translateY(0); }
+    .bottom-nav a { background: rgba(238,237,198,0.49); padding: 1em 5em; text-transform: uppercase; font-weight: 500; border-radius: 0.25em; font-family: 'Georgia', serif; font-size: 1.1em; color: #2F3C24; transition: transform 0.2s ease, background 0.3s ease; }
+    .bottom-nav a:hover { transform: scale(1.05); background: #4A5A3A; color: #FBF9C4; }
+
+    /* Footer */
+    .site-footer { background: #C1D7B3; text-align: center; padding: 1.5em 1em; font-size: 0.9em; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .site-footer.visible { opacity: 1; transform: translateY(0); }
+    .site-footer .social-icons { display: flex; justify-content: center; gap: 1em; margin-bottom: 3em; }
+    .site-footer .social-icons a img { width: 80px; height: auto; }
+
+    .section-title { font-size: 1.8em; font-weight: 600; color: #2d3a35; letter-spacing: 1px; text-align: center; margin: 3rem 0 1rem; }
+
+    .section-title {
+  margin: 1rem 0; /* pulls the “Our Methods” title closer */
+}
+
+.interactive {
+  margin: 1rem auto 4rem; /* less top-gap, centers container */
+}
+
+.interactive .item {
+  max-width: 500px;      /* uniform width */
+  margin: 1 auto;        /* center each box */
+  text-align: center;    /* center its contents */
+  padding: 1.5em;        /* adjust as needed */
+}
+
+.interactive .item img {
+  margin: 0 auto 1em;    /* center each graphic with some bottom space */
+}
+.offerings {
+  margin-bottom: 4rem;    /* space below your 1-on-1/Workshops/Motivational boxes */
+}
+
+.section-title {
+  margin-top: 10rem;       /* space above “OUR METHODS” */
+  margin-bottom: 1rem;    /* breathing room under the title */
+}
+
+.interactive {
+  margin-top: 2rem;       /* extra gap before the method cards */
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* Simple scale-up on hover for nav links */
+.site-header nav a {
+  display: inline-block;               /* allow transform */
+  padding: 0.5em 1em;                  /* keep your hit-area */
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+.site-header nav a:hover {
+  transform: scale(1.1);               /* 10% bigger */
+  color: #FBF9C4;                       /* match your hover tint */
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <nav><ul><li><a href="home.html">HOME</a></li><li><a href="about.html">ABOUT</a></li><li><a href="services.html">SERVICES</a></li></ul></nav>
+    <div class="logo"><img src="fa_logo.png" alt="Facing Anxiety Logo"></div>
+    <nav><ul><li><a href="contact.html">CONTACT</a></li><li><a href="blogs.html">BLOGS</a></li></ul></nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>HOW WE CAN HELP YOU TRANSFORM</h1>
+    <p>At Facing Anxiety, we offer a holistic path to healing, clarity, and purpose—supporting the whole person: mind, body, and spirit. Many come to us feeling overwhelmed, disconnected, or unsure how to move forward. Our mission is to provide the tools, space, and guidance needed to reclaim peace and purpose.</p>
+    <button class="btn-footer-style"><a href="schedule.html">BOOK YOUR SESSION</a></button>
+  </section>
+
+  <!-- Core Offerings -->
+  <section class="offerings">
+    <div class="offering"><h3>1-on-1 Coaching</h3><ul><li>Identify & overcome limiting beliefs</li><li>Set actionable goals & track progress</li><li>Gain accountability & support</li></ul></div>
+    <div class="offering"><h3>Workshops & Events</h3><ul><li>Master mindset & build confidence</li><li>Stress-to-Strength energy harnessing</li><li>Goal-Setting Bootcamp</li></ul></div>
+    <div class="offering"><h3>Motivational Speaking</h3><ul><li>Ignite hope beyond fear</li><li>Equip resilience tools</li><li>Foster shared purpose</li></ul></div>
+  </section>
+
+  <h2 class="section-title">OUR METHODS</h2>
+  <section class="interactive">
+    <div class="item" onclick="toggleDetails('d1')">
+      <img src="14.png" alt="Mind-Body-Spirit Alignment">
+      <h3>Mind-Body-Spirit Alignment</h3>
+      <div class="label">CLICK TO EXPAND ↓</div>
+      <div class="details" id="d1">
+        <p>Mind-Body-Spirit Alignment includes mindfulness and meditation to reduce stress and cultivate emotional calm, nutrition and wellness strategies to support physical well-being, and movement-based healing such as yoga or walking to help clients reconnect with their bodies. We also offer spiritual development through healing  and reflection, and encourage connection with nature as a powerful way to restore clarity and inner balance.</p>
+      </div>
+    </div>
+    <div class="item" onclick="toggleDetails('d2')">
+      <img src="15.png" alt="Transformational Life Coaching">
+      <h3>Transformational Life Coaching</h3>
+      <div class="label">CLICK TO EXPAND ↓</div>
+      <div class="details" id="d2">
+        <p>Through our Transformational Life Coaching, we support clients in gaining clarity, shifting limiting beliefs, and building emotional resilience. We help individuals set meaningful goals, navigate major life transitions, and develop a deeper sense of confidence and self-worth. Many of our clients also learn how to prioritize self-care and set healthy boundaries—creating daily rhythms that support lasting change.</p>
+      </div>
+    </div>
+    <div class="item" onclick="toggleDetails('d3')">
+      <img src="16.png" alt="Purpose & Career Empowerment">
+      <h3>Purpose &amp; Career Empowerment</h3>
+      <div class="label">CLICK TO EXPAND ↓</div>
+      <div class="details" id="d3">
+        <p>We provide tailored guidance and resources to unlock their full potential. By fostering self-awareness and confidence, we empower individuals to embrace their unique talents and passions, transforming aspirations into actionable goals. Our holistic approach not only enhances professional growth but also nurtures personal well-being, ensuring that clients not only find success in their careers but also experience fulfillment and happiness in their everyday lives. Together, we create a roadmap to a future where purpose and passion intersect, allowing clients to thrive both personally and professionally.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="tagline"><span>HEALING IS POSSIBLE</span><img src="faceoflogo.png" alt="Logo" class="tagline-logo"><span>PURPOSE IS WAITING</span></div>
+  </section>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="about.html">About Me</a><a href="services.html">Services</a><a href="contact.html">Contact</a><a href="blogs.html">Blogs</a>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="social-icons"><a href="location.html"><img src="17.png" alt="Map Icon"></a><a href="instagram.html"><img src="18.png" alt="Instagram Icon"></a><a href="linkedin.html"><img src="19.png" alt="LinkedIn Icon"></a><a href="https://www.youtube.com/channel/UCJ0CIz5sXcVUcrL84nI-OFA"><img src="20.png" alt="YouTube Icon"></a></div>
+    <p>© 2025 FACING ANXIETY | WEBSITE BY PARABLE.STUDIOS</p>
+  </footer>
+
+  <script>
+    // Fade-in observer
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.site-header, .hero, .offerings, .interactive, .cta, .bottom-nav, .site-footer').forEach(el => observer.observe(el));
+
+    // Toggle detail panels
+    function toggleDetails(id) {
+      document.getElementById(id).classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
