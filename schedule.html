@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Schedule a Session | Facing Anxiety</title>
-  <link rel="icon" type="image/x-icon" href="icon.png">
 
   <!-- Calendly widget CSS -->
   <link
@@ -83,6 +82,7 @@
     main {
       padding: 12rem 2rem 2rem;
       max-width: 900px;
+      height: auto;
       margin: 0 auto;
       position: relative;
     }
@@ -238,6 +238,9 @@
     }
   </style>
 </head>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+
 <body>
 
   <!-- Header -->
@@ -254,7 +257,8 @@
     <div
       class="calendly-inline-widget"
       data-url="https://calendly.com/facinganxietyteam"
-      style="min-width:320px;height:640px;">
+      data-resize="true"
+      style="min-width:320px;min-height:640px;">
     </div>
   </main>
 
@@ -307,8 +311,5 @@
   </script>
 </body>
 </html>
-
-  <!-- Calendly widget JS -->
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
 </body>
 </html>
