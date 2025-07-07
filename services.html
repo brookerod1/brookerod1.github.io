@@ -156,7 +156,7 @@
 
     /* Details toggling */
     .interactive .item .details {
-      display: none;
+      
       margin-top: 0.5em;
       text-align: left;
     }
@@ -283,6 +283,23 @@ ul {
       /*.site-header .logo img {
         height: 60px;
       }*/
+
+      /* Core Offerings: single column */
+      .offerings {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Our Methods: single column */
+      .interactive {
+        flex-direction: column !important;
+        align-items: center;
+      }
+      .interactive .item {
+        width: 100% !important;
+        max-width: none;
+        margin: 1rem 0;
+      }
+
       .bottom-nav {
         flex-wrap: wrap;
         gap: 0.5em;
@@ -321,26 +338,26 @@ ul {
 
   <h2 class="section-title">OUR METHODS</h2>
   <section class="interactive">
-    <div class="item" onclick="toggleDetails('d1')">
+    <div class="item">
       <img src="14.png" alt="Mind-Body-Spirit Alignment">
       <h3>Mind-Body-Spirit Alignment</h3>
-      <div class="label">CLICK TO EXPAND ↓</div>
+      <div class="label"></div>
       <div class="details" id="d1">
         <p>Mind-Body-Spirit Alignment includes mindfulness and meditation to reduce stress and cultivate emotional calm, nutrition and wellness strategies to support physical well-being, and movement-based healing such as yoga or walking to help clients reconnect with their bodies. We also offer spiritual development through healing  and reflection, and encourage connection with nature as a powerful way to restore clarity and inner balance.</p>
       </div>
     </div>
-    <div class="item" onclick="toggleDetails('d2')">
+    <div class="item">
       <img src="15.png" alt="Transformational Life Coaching">
       <h3>Transformational Life Coaching</h3>
-      <div class="label">CLICK TO EXPAND ↓</div>
+      <div class="label"></div>
       <div class="details" id="d2">
         <p>Through our Transformational Life Coaching, we support clients in gaining clarity, shifting limiting beliefs, and building emotional resilience. We help individuals set meaningful goals, navigate major life transitions, and develop a deeper sense of confidence and self-worth. Many of our clients also learn how to prioritize self-care and set healthy boundaries—creating daily rhythms that support lasting change.</p>
       </div>
     </div>
-    <div class="item" onclick="toggleDetails('d3')">
+    <div class="item">
       <img src="16.png" alt="Purpose & Career Empowerment">
       <h3>Purpose &amp; Career Empowerment</h3>
-      <div class="label">CLICK TO EXPAND ↓</div>
+      <div class="label"></div>
       <div class="details" id="d3">
         <p>We provide tailored guidance and resources to unlock their full potential. By fostering self-awareness and confidence, we empower individuals to embrace their unique talents and passions, transforming aspirations into actionable goals. Our holistic approach not only enhances professional growth but also nurtures personal well-being, ensuring that clients not only find success in their careers but also experience fulfillment and happiness in their everyday lives. Together, we create a roadmap to a future where purpose and passion intersect, allowing clients to thrive both personally and professionally.</p>
       </div>
