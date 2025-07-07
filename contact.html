@@ -263,16 +263,22 @@
   </section>
 
   <!-- Contact Form -->
-  <form class="contact-form">
+  <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
     <label for="first">First Name</label><label for="last">Last Name</label>
-    <input type="text" id="first" name="first" placeholder="First Name">
-    <input type="text" id="last" name="last" placeholder="Last Name">
+
+    <input type="hidden" name="access_key" value="6001df54-a44f-4bbf-972d-214c1036713d">
+
+    <input type="text" id="first" name="first" placeholder="First Name" required>
+    <input type="text" id="last" name="last" placeholder="Last Name" required>
 
     <label for="email" class="full">Email Address</label>
-    <input type="email" id="email" name="email" class="full" placeholder="you@example.com">
+    <input type="email" id="email" name="email" class="full" placeholder="you@example.com" required>
 
     <label for="msg" class="full">Message</label>
-    <textarea id="msg" name="message" class="full" placeholder="Your message..."></textarea>
+    <textarea id="msg" name="message" class="full" placeholder="Your message..." required></textarea>
+
+    <!-- Honeypot Spam Protection -->
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
     <div class="submit-wrap">
       <button type="submit" class="btn-footer-style">SUBMIT</button>
