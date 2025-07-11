@@ -323,7 +323,7 @@
 
   <!-- Hero Video Section -->
   <section class="hero">
-    <video autoplay loop muted playsinline>
+    <video id="heroVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
       <source src="heroloop.mp4" type="video/mp4">
     </video>
     <div class="scroll-indicator">SCROLL FOR MORE</div>
@@ -425,6 +425,24 @@
       '.site-header, .hero, .scroll-indicator, .services, .service-item, .about, .about-image, .about-text, .cta, .cta-instruction, .bottom-nav, .site-footer'
     ).forEach(el => {
       observer.observe(el);
+    });
+  </script>
+
+  <!-- Hero fade-in & explicit play() fallback -->
+  <script>
+    window.addEventListener('load', async () => {
+      const hero    = document.querySelector('.hero');
+      const video   = document.getElementById('heroVideo');
+  
+      // trigger your CSS fade-in
+      hero.classList.add('visible');
+  
+      // some browsers block autoplay unless you call play()
+      try {
+        await video.play();
+      } catch (err) {
+        console.warn('Hero video autoplay was prevented:', err);
+      }
     });
   </script>
 </body>
