@@ -275,7 +275,7 @@
     /* Responsive tweaks for mobile screens */
     @media (max-width: 600px) {
       .site-header {
-        flex-direction: column;
+        flex-direction: row !important;
         align-items: center;
         padding: 0.5em 1em;
       }
@@ -283,10 +283,13 @@
         width: 100%;
         margin: 0.5em 0;
       }
+      .site-header nav a {
+        font-size: clamp(0.5 em, 2vw, 0.9em);
+      }
       .site-header nav ul {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 1em;
+        gap: 0em;
       }
       .site-header .logo img {
         height: 60px;
@@ -323,7 +326,7 @@
 
   <!-- Hero Video Section -->
   <section class="hero">
-    <video autoplay loop muted playsinline>
+    <video id="heroVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
       <source src="heroloop.mp4" type="video/mp4">
     </video>
     <div class="scroll-indicator">SCROLL FOR MORE</div>
@@ -406,7 +409,7 @@
   <a href="https://www.youtube.com/channel/UCJ0CIz5sXcVUcrL84nI-OFA" aria-label="YouTube">
     <img src="20.png" alt="YouTube Icon" style="width:80px; height:auto;">
   </a>
-  </div>
+</div>
     
     <p>© 2025 FACING ANXIETY | WEBSITE BY PARABLE.STUDIOS</p></footer>
 
@@ -425,6 +428,24 @@
       '.site-header, .hero, .scroll-indicator, .services, .service-item, .about, .about-image, .about-text, .cta, .cta-instruction, .bottom-nav, .site-footer'
     ).forEach(el => {
       observer.observe(el);
+    });
+  </script>
+
+  <!-- Hero fade-in & explicit play() fallback -->
+  <script>
+    window.addEventListener('load', async () => {
+      const hero    = document.querySelector('.hero');
+      const video   = document.getElementById('heroVideo');
+  
+      // trigger your CSS fade-in
+      hero.classList.add('visible');
+  
+      // some browsers block autoplay unless you call play()
+      try {
+        await video.play();
+      } catch (err) {
+        console.warn('Hero video autoplay was prevented:', err);
+      }
     });
   </script>
 </body>
