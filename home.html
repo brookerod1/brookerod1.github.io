@@ -275,7 +275,7 @@
     /* Responsive tweaks for mobile screens */
     @media (max-width: 600px) {
       .site-header {
-        flex-direction: column;
+        flex-direction: row !important;
         align-items: center;
         padding: 0.5em 1em;
       }
@@ -283,10 +283,13 @@
         width: 100%;
         margin: 0.5em 0;
       }
+      .site-header nav a {
+        font-size: clamp(0.5 em, 2vw, 0.9em);
+      }
       .site-header nav ul {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 1em;
+        gap: 0em;
       }
       .site-header .logo img {
         height: 60px;
