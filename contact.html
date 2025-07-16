@@ -32,48 +32,80 @@
 
     /* Header / Navigation */
     .site-header {
-      position: absolute; top: 0; left: 0; width: 100%;
+      position: absolute;
+      top: 0; left: 0; width: 100%;
       padding: 1em 2em;
-      display: flex; justify-content: space-between; align-items: center;
-      z-index: 10; background: rgba(255,255,255,0);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3em 2em;
+      z-index: 10;
+      background: rgba(255,255,255,0);
+      transition: opacity .6s ease, transform .6s ease;
       opacity: 0; transform: translateY(20px);
     }
-    .site-header.visible { opacity:1; transform: translateY(0); }
-    .site-header nav ul { list-style: none; display: flex; gap: 2em; }
-    .site-header nav a {
+
+    .site-header.visible { opacity:1; transform:translateY(0); }
+
+    /* hide the mobile nav by default */
+    .main-nav-mobile {
+      display: none;
+    }
+
+    /* both desktop navs share the same styling */
+    .nav-left ul,
+    .nav-right ul {
+      list-style: none;
+      display: flex;
+      gap: 3em;
+    }
+
+    .nav-left a,
+    .nav-right a {
       font-size: 1em;
       font-weight: 500;
       color: #EEEDC6;
-      text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1), 2px 2px 4px rgba(0,0,0,0.2);
+      text-shadow: 1px 2px 2px rgba(0,0,0,0.1),
+                  2px 2px 4px rgba(0,0,0,0.2);
       font-family: 'Georgia', serif;
       padding: 0.5em 1em;
-      cursor: pointer;
-      transition: color 0.3s ease, transform 0.2s ease;
       position: relative;
+      transition: color .3s ease, transform .2s ease;
     }
-    .site-header nav ul {
-      gap: 3em;
-    }
-    .site-header nav a:hover {
+
+    .nav-left a:hover,
+    .nav-right a:hover {
       color: #FBF9C4;
       transform: scale(1.05);
     }
-    .site-header nav a::after {
+
+    .nav-left a::after,
+    .nav-right a::after {
       content: "";
       position: absolute;
-      bottom: -4px;
-      left: 50%;
-      width: 0;
-      height: 2px;
+      bottom: -4px; left: 50%;
+      width: 0; height: 2px;
       background: #FBF9C4;
-      transition: width 0.3s ease, left 0.3s ease;
+      transition: width .3s ease, left .3s ease;
     }
-    .site-header nav a:hover::after {
+
+    .nav-left a:hover::after,
+    .nav-right a:hover::after {
       width: 100%;
       left: 0;
     }
-    .site-header .logo img { height: 120px; object-fit: contain; }
+
+    /* absolute‑center the logo */
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+    }
+    .logo img {
+      height: 120px;
+      object-fit: contain;
+    }
 
     /* — Book Button — */
     .btn-footer-style {
@@ -209,42 +241,57 @@
   color: #FBF9C4;                       /* match your hover tint */
 }
 
-  /* Responsive tweaks for mobile screens */
-    @media (orientation: portrait) {
-      .site-header .logo img {
+  @media (orientation: portrait) {
+      .site-header {
+        padding: 0.5em 0.5em;
+      }
+      /* hide desktop navs + logo */
+      .nav-left,
+      .nav-right,
+      .logo {
         display: none;
+      }
+
+      /* show the single, full‑width nav */
+      .main-nav-mobile {
+        display: block;
+        width: 100%;
+        padding: .5em 0;
+        background: transparent;
+      }
+      .main-nav-mobile ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5em;
+      }
+      .main-nav-mobile a {
+        font-size: clamp(0.6em, 2vw, 1em);
+        font-weight: 500;
+        color: #EEEDC6;
+        padding: .5em .75em;
+        position: relative;
+        transition: color .3s ease, transform .2s ease;
+      }
+      .main-nav-mobile a:hover {
+        color: #FBF9C4;
+        transform: scale(1.05);
+      }
+      .main-nav-mobile a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px; left: 50%;
+        width: 0; height: 2px;
+        background: #FBF9C4;
+        transition: width .3s ease, left .3s ease;
+      }
+      .main-nav-mobile a:hover::after {
+        width: 100%;
+        left: 0;
       }
       .scroll-indicator {
         display: none;
-      }
-      .site-header {
-        flex-direction: column;
-        align-items: center;
-        padding: 0.5em 1em;
-      }
-      .site-header nav a {
-        font-size: 1em;
-      }
-      .site-header nav {
-        width: 100%;
-        margin: 0.5em 0;
-      }
-      .site-header nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1em;
-      }
-      /*.site-header .logo img {
-        height: 60px;
-      }*/
-      .bottom-nav {
-        flex-wrap: wrap;
-        gap: 0.5em;
-        padding: 1em 0.5em;
-      }
-      .bottom-nav a {
-        padding: 0.75em 1em;
-        font-size: 0.9em;
       }
     }
   </style>
@@ -253,15 +300,37 @@
 
   <!-- Header -->
   <header class="site-header">
-    <nav><ul><li><a href="home.html">HOME</a></li><li><a href="about.html">ABOUT</a></li><li><a href="services.html">SERVICES</a></li></ul></nav>
-    <div class="logo"><img src="fa_logo.png" alt="Facing Anxiety Logo"></div>
-    <nav><ul><li><a href="contact.html">CONTACT</a></li><li><a href="blogs.html">BLOGS</a></li></ul></nav>
-  </header>
+    <!-- desktop/landscape nav groups -->
+    <nav class="nav-left">
+      <ul>
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+      </ul>
+    </nav>
 
-  <!-- Hero / Title -->
-  <section class="hero">
-    <h1>GET IN TOUCH</h1>
-  </section>
+    <div class="logo">
+      <img src="fa_logo.png" alt="Facing Anxiety Logo">
+    </div>
+
+    <nav class="nav-right">
+      <ul>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="blogs.html">BLOGS</a></li>
+      </ul>
+    </nav>
+
+    <!-- portrait‑only single nav -->
+    <nav class="main-nav-mobile">
+      <ul>
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="blogs.html">BLOGS</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <!-- Contact Form -->
   <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
