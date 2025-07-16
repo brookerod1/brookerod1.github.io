@@ -21,48 +21,80 @@
 
     /* Header / Navigation */
     .site-header {
-      position: absolute; top: 0; left: 0; width: 100%;
+      position: absolute;
+      top: 0; left: 0; width: 100%;
       padding: 1em 2em;
-      display: flex; justify-content: space-between; align-items: center;
-      z-index: 10; background: rgba(255,255,255,0);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3em 2em;
+      z-index: 10;
+      background: rgba(255,255,255,0);
+      transition: opacity .6s ease, transform .6s ease;
       opacity: 0; transform: translateY(20px);
     }
-    .site-header.visible { opacity:1; transform: translateY(0); }
-    .site-header nav ul { list-style: none; display: flex; gap: 2em; }
-    .site-header nav a {
+
+    .site-header.visible { opacity:1; transform:translateY(0); }
+
+    /* hide the mobile nav by default */
+    .main-nav-mobile {
+      display: none;
+    }
+
+    /* both desktop navs share the same styling */
+    .nav-left ul,
+    .nav-right ul {
+      list-style: none;
+      display: flex;
+      gap: 3em;
+    }
+
+    .nav-left a,
+    .nav-right a {
       font-size: 1em;
       font-weight: 500;
       color: #EEEDC6;
-      text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1), 2px 2px 4px rgba(0,0,0,0.2);
+      text-shadow: 1px 2px 2px rgba(0,0,0,0.1),
+                  2px 2px 4px rgba(0,0,0,0.2);
       font-family: 'Georgia', serif;
       padding: 0.5em 1em;
-      cursor: pointer;
-      transition: color 0.3s ease, transform 0.2s ease;
       position: relative;
+      transition: color .3s ease, transform .2s ease;
     }
-    .site-header nav ul {
-      gap: 3em;
-    }
-    .site-header nav a:hover {
+
+    .nav-left a:hover,
+    .nav-right a:hover {
       color: #FBF9C4;
       transform: scale(1.05);
     }
-    .site-header nav a::after {
+
+    .nav-left a::after,
+    .nav-right a::after {
       content: "";
       position: absolute;
-      bottom: -4px;
-      left: 50%;
-      width: 0;
-      height: 2px;
+      bottom: -4px; left: 50%;
+      width: 0; height: 2px;
       background: #FBF9C4;
-      transition: width 0.3s ease, left 0.3s ease;
+      transition: width .3s ease, left .3s ease;
     }
-    .site-header nav a:hover::after {
+
+    .nav-left a:hover::after,
+    .nav-right a:hover::after {
       width: 100%;
       left: 0;
     }
-    .site-header .logo img { height: 120px; object-fit: contain; }
+
+    /* absolute‑center the logo */
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+    }
+    .logo img {
+      height: 120px;
+      object-fit: contain;
+    }
 
     /* Hero */
     .hero {
@@ -87,26 +119,26 @@
       z-index: 1; pointer-events: none;
     }
     /* Centered Scroll Indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 3em;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 1.1em;
-  font-weight: 500;
-  color: #EEEDC6;
-  text-shadow: 1px 2px 2px rgba(0,0,0,0.1),
-               2px 2px 4px rgba(0,0,0,0.2);
-  z-index: 2;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  opacity: 0;
-  transform: translateY(20px);
-}
-.scroll-indicator.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .scroll-indicator {
+      position: absolute;
+      bottom: 3em;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 1.1em;
+      font-weight: 500;
+      color: #EEEDC6;
+      text-shadow: 1px 2px 2px rgba(0,0,0,0.1),
+                  2px 2px 4px rgba(0,0,0,0.2);
+      z-index: 2;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .scroll-indicator.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
     
     .scroll-indicator.visible { opacity:1; transform: translateY(0); }
 
@@ -129,15 +161,15 @@
     .service-item p { font-size: 0.95em; }
 
     /* put this in your main stylesheet */
-.services .service-item h3 a {
-  color: inherit;           /* use the h3’s text color */
-  text-decoration: none;    /* remove the underline if you like */
-}
+    .services .service-item h3 a {
+      color: inherit;           /* use the h3’s text color */
+      text-decoration: none;    /* remove the underline if you like */
+    }
 
-.services .service-item h3 a:hover {
-  /* optional hover styling */
-  text-decoration: underline;
-}
+    .services .service-item h3 a:hover {
+      /* optional hover styling */
+      text-decoration: underline;
+    }
 
     /* Section: About */
     .about {
@@ -169,27 +201,27 @@
     .about-text button { display: inline-block; margin: 2em auto 2; }
 
     /* Footer-nav button style */
-.btn-footer-style {
-  display: inline-block;
-  background: rgba(238, 237, 198, 0.809);
-  color: #2F3C24;
-  text-transform: uppercase;
-  font-family: 'Georgia', serif;
-  font-size: 1.1em;
-  font-weight: 500;
-  padding: 0.75em 1.5em;
-  border-radius: .25px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: background 0.3s, color 0.3s, transform 0.2s;
-  border: none;
-  cursor: pointer;
-  
-}
-.btn-footer-style:hover {
-  background: #4A5A3A;
-  color: #FBF9C4;   /* new hover text color */
-  transform: translateY(-2px);
-}
+    .btn-footer-style {
+      display: inline-block;
+      background: rgba(238, 237, 198, 0.809);
+      color: #2F3C24;
+      text-transform: uppercase;
+      font-family: 'Georgia', serif;
+      font-size: 1.1em;
+      font-weight: 500;
+      padding: 0.75em 1.5em;
+      border-radius: .25px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+      
+    }
+    .btn-footer-style:hover {
+      background: #4A5A3A;
+      color: #FBF9C4;   /* new hover text color */
+      transform: translateY(-2px);
+    }
 
     /* CTA-specific text */
     .cta-instruction {
@@ -214,33 +246,33 @@
     .tagline-logo { width: 80px; filter: opacity(50%); }
 
     .bottom-nav {
-  display: flex;
-  flex-wrap: wrap;           /* allow wrapping on very narrow screens */
-  gap: 0.5em;                /* space between buttons */
-  padding: 1em;
-  background: transparent;
-}
+      display: flex;
+      flex-wrap: wrap;           /* allow wrapping on very narrow screens */
+      gap: 0.5em;                /* space between buttons */
+      padding: 1em;
+      background: transparent;
+    }
 
-.bottom-nav a {
-  flex: 1 1 0;               /* grow & shrink equally */
-  text-align: center;
-  padding: 0.75em 0;         /* vertical padding only */
-  background: rgba(238,237,198,0.49);
-  color: #2F3C24;
-  text-transform: uppercase;
-  font-family: 'Georgia', serif;
-  font-size: 1.1em;
-  font-weight: 500;
-  border-radius: 0.25px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: background 0.3s, color 0.3s, transform 0.2s;
-}
+    .bottom-nav a {
+      flex: 1 1 0;               /* grow & shrink equally */
+      text-align: center;
+      padding: 0.75em 0;         /* vertical padding only */
+      background: rgba(238,237,198,0.49);
+      color: #2F3C24;
+      text-transform: uppercase;
+      font-family: 'Georgia', serif;
+      font-size: 1.1em;
+      font-weight: 500;
+      border-radius: 0.25px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
 
-.bottom-nav a:hover {
-  background: #4A5A3A;
-  color: #FBF9C4;
-  transform: translateY(-2px);
-}
+    .bottom-nav a:hover {
+      background: #4A5A3A;
+      color: #FBF9C4;
+      transform: translateY(-2px);
+    }
 
     /* Footer */
     .site-footer {
@@ -262,52 +294,64 @@
       to { opacity: 1; transform: translateY(0); }
     }
     /* Simple scale-up on hover for nav links */
-.site-header nav a {
-  display: inline-block;               /* allow transform */
-  padding: 0.5em 1em;                  /* keep your hit-area */
-  transition: transform 0.2s ease, color 0.3s ease;
-}
-.site-header nav a:hover {
-  transform: scale(1.1);               /* 10% bigger */
-  color: #FBF9C4;                       /* match your hover tint */
-}
-
-    /* Responsive tweaks for mobile screens */
-    @media (max-width: 600px) {
-      .site-header {
-        flex-direction: row !important;
-        align-items: center;
-        padding: 0.5em 1em;
-      }
-      .site-header nav {
-        width: 100%;
-        margin: 0.5em 0;
-      }
-      .site-header nav a {
-        font-size: clamp(0.5 em, 2vw, 0.9em);
-      }
-      .site-header nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0em;
-      }
-      .site-header .logo img {
-        height: 60px;
-      }
-      .bottom-nav {
-        flex-wrap: wrap;
-        gap: 0.5em;
-        padding: 1em 0.5em;
-      }
-      .bottom-nav a {
-        padding: 0.75em 1em;
-        font-size: 0.9em;
-      }
+    .site-header nav a {
+      display: inline-block;               /* allow transform */
+      padding: 0.5em 1em;                  /* keep your hit-area */
+      transition: transform 0.2s ease, color 0.3s ease;
+    }
+    .site-header nav a:hover {
+      transform: scale(1.1);               /* 10% bigger */
+      color: #FBF9C4;                       /* match your hover tint */
     }
 
     @media (orientation: portrait) {
-      .site-header .logo img {
+      .site-header {
+        padding: 0.5em 0.5em;
+      }
+      /* hide desktop navs + logo */
+      .nav-left,
+      .nav-right,
+      .logo {
         display: none;
+      }
+
+      /* show the single, full‑width nav */
+      .main-nav-mobile {
+        display: block;
+        width: 100%;
+        padding: .5em 0;
+        background: transparent;
+      }
+      .main-nav-mobile ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5em;
+      }
+      .main-nav-mobile a {
+        font-size: clamp(0.6em, 2vw, 1em);
+        font-weight: 500;
+        color: #EEEDC6;
+        padding: .5em .75em;
+        position: relative;
+        transition: color .3s ease, transform .2s ease;
+      }
+      .main-nav-mobile a:hover {
+        color: #FBF9C4;
+        transform: scale(1.05);
+      }
+      .main-nav-mobile a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px; left: 50%;
+        width: 0; height: 2px;
+        background: #FBF9C4;
+        transition: width .3s ease, left .3s ease;
+      }
+      .main-nav-mobile a:hover::after {
+        width: 100%;
+        left: 0;
       }
       .scroll-indicator {
         display: none;
@@ -319,9 +363,36 @@
 
   <!-- Header -->
   <header class="site-header">
-    <nav><ul><li><a href="home.html">HOME</a></li><li><a href="about.html">ABOUT</a></li><li><a href="services.html">SERVICES</a></li></ul></nav>
-    <div class="logo"><img src="fa_logo.png" alt="Facing Anxiety Logo"></div>
-    <nav><ul><li><a href="contact.html">CONTACT</a></li><li><a href="blogs.html">BLOGS</a></li></ul></nav>
+    <!-- desktop/landscape nav groups -->
+    <nav class="nav-left">
+      <ul>
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+      </ul>
+    </nav>
+
+    <div class="logo">
+      <img src="fa_logo.png" alt="Facing Anxiety Logo">
+    </div>
+
+    <nav class="nav-right">
+      <ul>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="blogs.html">BLOGS</a></li>
+      </ul>
+    </nav>
+
+    <!-- portrait‑only single nav -->
+    <nav class="main-nav-mobile">
+      <ul>
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="blogs.html">BLOGS</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- Hero Video Section -->
@@ -332,56 +403,56 @@
     <div class="scroll-indicator">SCROLL FOR MORE</div>
   </section>
 
-<!-- Services -->
-<section class="services">
-  <h2>HOW I CAN HELP YOU TRANSFORM</h2>
-  <div class="service-list">
-    <div class="service-item">
-      <img src="14.png" alt="1-on-1 Coaching Icon">
-      <h3><a href="services.html">1-on-1 Coaching</a></h3>
-      <p>Personalized sessions for mindset shifts and goal setting.</p>
+  <!-- Services -->
+  <section class="services">
+    <h2>HOW I CAN HELP YOU TRANSFORM</h2>
+    <div class="service-list">
+      <div class="service-item">
+        <img src="14.png" alt="1-on-1 Coaching Icon">
+        <h3><a href="services.html">1-on-1 Coaching</a></h3>
+        <p>Personalized sessions for mindset shifts and goal setting.</p>
+      </div>
+      <div class="service-item">
+        <img src="15.png" alt="Workshops & Events Icon">
+        <h3><a href="services.html">Workshops & Events</a></h3>
+        <p>Group support and transformation through learning.</p>
+      </div>
+      <div class="service-item">
+        <img src="16.png" alt="Motivational Speaking Icon">
+        <h3><a href="services.html">Motivational Speaking</a></h3>
+        <p>Empowering messages for schools, churches, and businesses.</p>
+      </div>
     </div>
-    <div class="service-item">
-      <img src="15.png" alt="Workshops & Events Icon">
-      <h3><a href="services.html">Workshops & Events</a></h3>
-      <p>Group support and transformation through learning.</p>
-    </div>
-    <div class="service-item">
-      <img src="16.png" alt="Motivational Speaking Icon">
-      <h3><a href="services.html">Motivational Speaking</a></h3>
-      <p>Empowering messages for schools, churches, and businesses.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- About / Bio -->
-<section id="about" class="about">
-  <div class="about-image">
-    <img src="12.jpg" alt="Alejandra Vicent at the beach">
-  </div>
-  <div class="about-text">
-    <h2>ALEJANDRA VICENT</h2>
-    <ul>
-      <li>10+ Years Coaching Experience</li>
-      <li>Two-Time Best-Selling Author of Overcomer Redeemed</li>
-      <li>Founder of the Global Women's Movement, Sisterhood</li>
-      <li>Sought-After Motivational Speaker</li>
-      <li>Creator of the Breakthrough Journaling Method™ for Mental Clarity and Goal Mastery</li>
-    </ul>
-    <a href="about.html" class="btn-footer-style">MORE ABOUT MY STORY</a>
-  </div>
-</section>
+  <!-- About / Bio -->
+  <section id="about" class="about">
+    <div class="about-image">
+      <img src="12.jpg" alt="Alejandra Vicent at the beach">
+    </div>
+    <div class="about-text">
+      <h2>ALEJANDRA VICENT</h2>
+      <ul>
+        <li>10+ Years Coaching Experience</li>
+        <li>Two-Time Best-Selling Author of Overcomer Redeemed</li>
+        <li>Founder of the Global Women's Movement, Sisterhood</li>
+        <li>Sought-After Motivational Speaker</li>
+        <li>Creator of the Breakthrough Journaling Method™ for Mental Clarity and Goal Mastery</li>
+      </ul>
+      <a href="about.html" class="btn-footer-style">MORE ABOUT MY STORY</a>
+    </div>
+  </section>
 
-<!-- CTA -->
-<section class="cta">
-  <div class="tagline">
-    <span>HEALING IS POSSIBLE</span>
-    <img src="faceoflogo.png" alt="Logo" class="tagline-logo">
-    <span>PURPOSE IS WAITING</span>
-  </div>
-  <div class="cta-instruction">BOOK YOUR SESSION</div>
-  <a href="schedule.html" class="btn-footer-style">SCHEDULE TODAY</a>
-</section>
+  <!-- CTA -->
+  <section class="cta">
+    <div class="tagline">
+      <span>HEALING IS POSSIBLE</span>
+      <img src="faceoflogo.png" alt="Logo" class="tagline-logo">
+      <span>PURPOSE IS WAITING</span>
+    </div>
+    <div class="cta-instruction">BOOK YOUR SESSION</div>
+    <a href="schedule.html" class="btn-footer-style">SCHEDULE TODAY</a>
+  </section>
 
   <!-- Bottom Navigation -->
   <nav class="bottom-nav">
