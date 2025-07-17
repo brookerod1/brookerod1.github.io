@@ -30,7 +30,7 @@
 
     /* Header / Navigation */
     .site-header {
-      position: sticky;
+      position: fixed;
       top: 0; left: 0; width: 100%;
       padding: 1em 2em;
       display: flex;
@@ -256,7 +256,7 @@
     .tagline-logo { width: 80px; filter: opacity(50%); }
 
     .bottom-nav {
-      display: flex;
+      display: none;             /* should be flex */
       flex-wrap: wrap;           /* allow wrapping on very narrow screens */
       gap: 0.5em;                /* space between buttons */
       padding: 1em;
