@@ -109,7 +109,7 @@
 
     /* Main Content & Sections */
     main {
-      padding: 12rem 2rem 2rem;
+      padding: 6rem 2rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
       position: relative;
@@ -267,62 +267,66 @@
 
   /* Responsive tweaks for mobile screens */
   @media (orientation: portrait) {
-      body::before {
-        height: 75px;
-      }
-    
-      .site-header {
-        padding: 0.5em 0.0em;
-      }
-      /* hide desktop navs + logo */
-      .nav-left,
-      .nav-right,
-      .logo {
-        display: none;
-      }
-
-      /* show the single, full‑width nav */
-      .main-nav-mobile {
-        display: block;
-        width: 100%;
-        padding: .5em 0;
-        background: transparent;
-      }
-      .main-nav-mobile ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.5em;
-      }
-      .main-nav-mobile a {
-        font-size: clamp(0.75em, 2vw, 1em);
-        font-weight: 500;
-        color: #EEEDC6;
-        padding: .5em .75em;
-        position: relative;
-        transition: color .3s ease, transform .2s ease;
-      }
-      .main-nav-mobile a:hover {
-        color: #FBF9C4;
-        transform: scale(1.05);
-      }
-      .main-nav-mobile a::after {
-        content: "";
-        position: absolute;
-        bottom: -4px; left: 50%;
-        width: 0; height: 2px;
-        background: #FBF9C4;
-        transition: width .3s ease, left .3s ease;
-      }
-      .main-nav-mobile a:hover::after {
-        width: 100%;
-        left: 0;
-      }
-      .scroll-indicator {
-        display: none;
-      }
+    main {
+      padding: 2rem 2rem 2rem;
     }
+
+    body::before {
+      height: 75px;
+    }
+  
+    .site-header {
+      padding: 0.5em 0.0em;
+    }
+    /* hide desktop navs + logo */
+    .nav-left,
+    .nav-right,
+    .logo {
+      display: none;
+    }
+
+    /* show the single, full‑width nav */
+    .main-nav-mobile {
+      display: block;
+      width: 100%;
+      padding: .5em 0;
+      background: transparent;
+    }
+    .main-nav-mobile ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+    .main-nav-mobile a {
+      font-size: clamp(0.75em, 2vw, 1em);
+      font-weight: 500;
+      color: #EEEDC6;
+      padding: .5em .75em;
+      position: relative;
+      transition: color .3s ease, transform .2s ease;
+    }
+    .main-nav-mobile a:hover {
+      color: #FBF9C4;
+      transform: scale(1.05);
+    }
+    .main-nav-mobile a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px; left: 50%;
+      width: 0; height: 2px;
+      background: #FBF9C4;
+      transition: width .3s ease, left .3s ease;
+    }
+    .main-nav-mobile a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+    .scroll-indicator {
+      display: none;
+    }
+  }
   </style>
 </head>
 <body>
