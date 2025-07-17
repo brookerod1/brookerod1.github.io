@@ -19,9 +19,18 @@
     a { text-decoration: none; }
     img { max-width: 100%; display: block; }
 
+    /* Gradient Overlay */
+    body::before {
+      content: '';
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 200px;
+      background: linear-gradient(to bottom, rgba(1,16,3,0.85), rgba(1,16,3,0));
+      pointer-events: none; z-index: 5;
+    }
+
     /* Header / Navigation */
     .site-header {
-      position: absolute;
+      position: sticky;
       top: 0; left: 0; width: 100%;
       padding: 1em 2em;
       display: flex;
@@ -305,8 +314,12 @@
     }
 
     @media (orientation: portrait) {
+      body::before {
+        height: 75px;
+      }
+  
       .site-header {
-        padding: 0.5em 0.5em;
+        padding: 0.5em 0.0em;
       }
       /* hide desktop navs + logo */
       .nav-left,
