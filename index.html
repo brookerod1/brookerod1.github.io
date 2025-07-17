@@ -111,6 +111,7 @@
       overflow: hidden;
       transition: opacity 0.6s ease, transform 0.6s ease;
       opacity: 0; transform: translateY(20px);
+      top: -135px;
     }
     .hero.visible { opacity:1; transform: translateY(0); }
     .hero video {
@@ -314,10 +315,17 @@
     }
 
     @media (orientation: portrait) {
+      .services {
+        padding: 2em 2em;
+      }
+      .hero {
+        top: -70px;
+      }
+      
       body::before {
         height: 75px;
       }
-  
+      
       .site-header {
         padding: 0.5em 0.0em;
       }
@@ -340,7 +348,7 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 1.5em;
+        gap: 0.5em;
       }
       .main-nav-mobile a {
         font-size: clamp(0.75em, 2vw, 1em);
