@@ -210,29 +210,6 @@
     .about-text ul li::before { content: '•'; margin-right: 0.5em; }
     .about-text button { display: inline-block; margin: 2em auto 2; }
 
-    /* Footer-nav button style */
-    .btn-footer-style {
-      display: inline-block;
-      background: rgba(238, 237, 198, 0.809);
-      color: #2F3C24;
-      text-transform: uppercase;
-      font-family: 'Georgia', serif;
-      font-size: 1.1em;
-      font-weight: 500;
-      padding: 0.75em 1.5em;
-      border-radius: .25px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: background 0.3s, color 0.3s, transform 0.2s;
-      border: none;
-      cursor: pointer;
-      
-    }
-    .btn-footer-style:hover {
-      background: #4A5A3A;
-      color: #FBF9C4;   /* new hover text color */
-      transform: translateY(-2px);
-    }
-
     /* CTA-specific text */
     .cta-instruction {
       font-family: 'Georgia', serif;
@@ -286,13 +263,25 @@
 
     /* Footer */
     .site-footer {
-      background: #C1D7B3; text-align: center; padding: 1.5em 1em; font-size: 0.9em;
+      background: #C1D7B3; text-align: center;
+      padding: 1.5em 1em; font-size: 0.9em;
       transition: opacity 0.6s ease, transform 0.6s ease;
       opacity: 0; transform: translateY(20px);
     }
-    .site-footer.visible { opacity:1; transform: translateY(0); }
+    .site-footer.visible { opacity: 1; transform: translateY(0); }
+
+    .btn-footer-style {
+      display: inline-block; background: rgba(238, 237, 198, 0.809);
+      color: #2F3C24; text-transform: uppercase; font-family: 'Georgia', serif;
+      font-size: 1.1em; font-weight: 500; padding: 0.75em 1.5em;
+      border-radius: .25px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+      border: none; cursor: pointer;
+    }
+    .btn-footer-style:hover { background: #4A5A3A; color: #FBF9C4; transform: translateY(-2px); }
+
     .social-icons { display: flex; justify-content: center; gap: 1em; margin-bottom: 3em; }
-    .social-icons a { font-size: 1.2em; }
+    .social-icons a img { width: 80px; height: auto; }
 
     /* Keyframes */
     @keyframes fadeIn {
